@@ -1,0 +1,251 @@
+@charset "utf-8";
+/* box图片滚动轮播 */
+/* 第一页 */
+.pageFirst{
+}
+.pageFirst .imageBox{
+	width:100%;
+	height:100%;
+}
+.left{
+	position:absolute;
+    width: 38px;
+    height: 92px;
+    left: 5%;
+    top: 45%;
+    cursor: pointer;
+    background:url("../images/toLeft.png");
+}
+.left:hover{
+    background:url("../images/toLeft_hover.png");
+}
+.right{
+	position:absolute;
+    width: 38px;
+    height: 92px;
+    right: 5%;
+    top: 45%;
+    cursor: pointer;
+    background:url("../images/toRight.png");
+}
+.right:hover{
+    background:url("../images/toRight_hover.png");
+}
+.imageBox{
+}
+.imageShow{
+}
+.imageShow ul li{
+	cursor:pointer;
+    float: left;
+}
+.imageShow ul li img{
+	width:100%;
+	height:100%;
+}
+.imageControl{
+    position: absolute;
+    width: 30%;
+    height: 20px;
+    left: 35%;
+    bottom: 5%;
+}
+.imageControl ul li{
+    float: left;
+    width:14px;
+    height: 14px;
+    cursor: pointer;
+    position: relative;
+    border: 3px solid #9a9a9a;
+    -webkit-border-radius:100%;
+    -moz-border-radius:100%;
+    -ms-border-radius:100%;
+    -o-border-radius:100%;
+    border-radius: 100%;
+    overflow: hidden;
+    behavior:url(js/PIE.htc);
+}
+.imageControl ul li:hover{
+    background:#03FBD0;
+}
+.liNot{
+    background: #fff;
+}
+.liSelect{
+    background:#03FBD0;
+}
+
+/* 人物页面 */
+.outBox{
+    /*position: absolute;
+    top: 0px;
+    z-index: 100;*/
+}
+.hidden{
+    display: none;
+}
+.img{
+    height: 100%;
+    position: relative;
+    -webkit-border-radius:100%;
+    -moz-border-radius:100%;
+    -ms-border-radius:100%;
+    -o-border-radius:100%;
+    border-radius: 100%;
+    /*overflow: hidden;*/
+    behavior:url(js/PIE.htc);
+}
+.img img{
+    cursor: pointer;
+    -webkit-border-radius:100%;
+    -moz-border-radius:100%;
+    -ms-border-radius:100%;
+    -o-border-radius:100%;
+    border-radius: 100%;
+    behavior:url(js/PIE.htc);
+}
+.picBox p{
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    text-align: center;
+    color: #000;
+    position: relative;
+    top: -35px;
+}
+.img a{
+    cursor: pointer;
+    color: #333;
+}
+.img a:hover{
+    color: red;
+}
+.bigPic{
+    position: relative;
+    width: 60%;
+    left: 10%;
+    padding:10%;
+    -webkit-border-radius:100%;
+    -moz-border-radius:100%;
+    -ms-border-radius:100%;
+    -o-border-radius:100%;
+    border-radius: 100%;
+    overflow: hidden;
+    behavior:url(js/PIE.htc);
+}
+.bigPic img{
+    width: 100%;
+    height: 100%;
+    -webkit-border-radius:100%;
+    -moz-border-radius:100%;
+    -ms-border-radius:100%;
+    -o-border-radius:100%;
+    border-radius: 100%;
+    behavior:url(js/PIE.htc);
+}
+.perInfo{
+    padding-bottom: 30px;
+}
+.line{
+    width: 100%;
+    height: 1px;
+    background: #bbb;
+    margin:25px 0 20px 0;
+}
+.md-close{
+    cursor: pointer;
+    position: relative;
+    font-size: 30px;
+    color: #999;
+    width: 10%;
+}
+
+
+.md-modal {
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    width: 25%;
+    max-width: 630px;
+    min-width: 320px;
+    height: auto;
+    z-index: 2000;
+    visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.md-show {
+    visibility: visible;
+}
+
+
+
+/* outBox样式 */
+.md-content {
+    cursor: auto;
+    color: #555;
+    font-size: 16px;
+    font-family: "微软雅黑";
+    position: relative;
+    -webkit-border-radius:15px;
+    -moz-border-radius:15px;
+    -ms-border-radius:15px;
+    -o-border-radius:15px;
+    border-radius: 15px;
+    -moz-box-shadow:1px 1px 10px 1px #777;
+    -webkit-box-shadow:1px 1px 10px 1px #777;
+    box-shadow:1px 1px 10px 1px #777;
+    filter:
+        progid:DXImageTransform.Microsoft.Shadow(color='#777', Direction=135, Strength=5);
+    margin: 0 auto;
+    background:rgba(255,255,255,0.8);
+    -pie-background:rgba(255,255,255,0.8);
+    behavior:url(js/PIE.htc);
+}
+.md-content p{
+    text-align: center;
+    height: 26px;
+    line-height: 26px;
+}
+.name{
+    font-size: 22px;
+}
+
+
+/* Individual modal styles with animations/transitions */
+
+/* Effect 1: Fade in and scale up */
+
+/* Effect 4: Newspaper */
+.md-effect-4 .md-content {
+    -webkit-transform: scale(0) rotate(720deg);
+    -moz-transform: scale(0) rotate(720deg);
+    -ms-transform: scale(0) rotate(720deg);
+    transform: scale(0) rotate(720deg);
+    opacity: 0;
+}
+
+.md-show.md-effect-4 ~ .md-overlay,
+.md-effect-4 .md-content {
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.md-show.md-effect-4 .md-content {
+    -webkit-transform: scale(1) rotate(0deg);
+    -moz-transform: scale(1) rotate(0deg);
+    -ms-transform: scale(1) rotate(0deg);
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+}
+
+

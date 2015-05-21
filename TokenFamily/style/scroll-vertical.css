@@ -1,0 +1,141 @@
+@charset "utf-8";
+/* 上下滚动 */
+/* 借鉴搜狗4.2版http://ie.sogou.com/features4.2.html */
+*{margin:0px;}
+html{
+	overflow-y:hidden;
+	font-family:"Segoe UI", "Lucida Grande", Helvetica, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans","wenquanyi micro hei","Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif;
+}   /*去掉右侧滚动条*/
+#cont{
+	width:100%;
+	position:relative;
+}
+.guider{
+	position:fixed;
+	top:0px;
+	width:100%;
+	height:90px;
+	background:rgba(0,0,0,0.7);
+	-pie-background:rgba(0,0,0,0.7);
+	behavior:url(js/PIE.htc);
+	z-index:999;
+}
+.guiderIn{
+	width:1000px;
+	margin:0 auto;
+}
+.logo,.guide,.search{
+	float:left;
+}
+.logo{
+	width:243px;
+	margin-top:25px;
+	cursor:pointer;
+}
+.guide{
+	width:575px;
+	margin-left:40px;
+	margin-top:36px;
+}
+.cont-dep{
+	height:auto;
+	min-height:50px
+}
+.cont-dep li{
+	display:none;
+	font-size:15px;
+/*	border-bottom:1px solid #8F8E8E;*/
+	height:28px;
+	line-height:28px;
+	background:rgba(0,0,0,0.3);
+	-pie-background:rgba(0,0,0,0.3);
+	behavior:url(js/PIE.htc);
+}
+.search{
+	width:140px;
+	margin-top:34px;
+}
+.searchText{
+	float:left;
+	width:110px;
+	height:27px;
+	background:#fff;
+}
+.searchButton{
+	float:left;
+	width:27px;
+	height:27px;
+	cursor:pointer;
+	background:#9a9a9a;
+}
+.searchButton:hover{
+	background:#894DD4;
+}
+.searchButton img{
+	margin:6px 5px;
+}
+.people{
+	font-family:"微软雅黑";
+	font-size:14px;
+	font-style:italic;
+	color:#555;
+	padding:0;
+	margin:4px 0 0 2px;
+	border:0;
+	outline:0;
+	background:transparent;
+	width:110px;
+	vertical-align:central;
+}
+.guider ul {
+    color:#fff;
+}
+.guider ul li{
+	font-size:16px;
+	width:82px;
+	text-align:center;
+	float:left;
+	cursor:pointer;
+}
+.guide ul li:hover{
+	color:#06F53F;
+}
+.select{
+    color:#06F53F;
+}
+.stage{
+	width:100%;
+	height:580px;
+	display:block;
+	position:relative;
+	overflow: hidden;
+}
+#stage1{
+}
+#stage2{
+	background-color:#97d3ff;
+}
+#stage3{
+	background-color:#ffb291;
+}
+#stage4{
+	background-color:#ffc437;
+}
+#stage5{
+	background-color:#fff45c;
+}
+#stage6{
+	background-color:#b7e8fc;
+}
+#stage7{
+	background-color:#b6befc;
+}
+#stage8{
+	background-color:#85d696;
+}
+#stage9{
+	background-color:#000;
+}
+#stage10{
+	background-color:#fff;
+}
