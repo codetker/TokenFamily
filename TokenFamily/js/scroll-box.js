@@ -37,10 +37,10 @@ $(document).ready(function() {
 
             if(!$(box).is(":animated")){  //在没有动作时执行函数
                 if(!direction){ //先讨论点击control框时(direction传入0，index表示目标图片编号)
-                    $(imgList).siblings().fadeOut(1000);
+                    $(imgList).siblings().fadeOut(500);
                     setTimeout(function(){
-                        $(imgList).eq(index).fadeIn(1000);
-                    },1000);
+                        $(imgList).eq(index).fadeIn(500);
+                    },500);
 
                     $(conList).removeClass("liSelect");
                     $(conList).eq(index).addClass("liSelect");
@@ -49,16 +49,16 @@ $(document).ready(function() {
                         $(conList).removeClass("liSelect");
                         if(index==indexMax){
                             index=indexMin;
-                            $(imgList).eq(indexMax).fadeOut(1000);
+                            $(imgList).eq(indexMax).fadeOut(500);
                             setTimeout(function(){
-                                $(imgList).eq(indexMin).fadeIn(1000);
-                            },1000);
+                                $(imgList).eq(indexMin).fadeIn(500);
+                            },500);
                         }else{
                             index+=1;
-                            $(imgList).eq(index-1).fadeOut(1000);
+                            $(imgList).eq(index-1).fadeOut(500);
                             setTimeout(function(){
-                                $(imgList).eq(index).fadeIn(1000);
-                            },1000);
+                                $(imgList).eq(index).fadeIn(500);
+                            },500);
                         }
                         $(conList).eq(index).addClass("liSelect");
 
@@ -66,16 +66,16 @@ $(document).ready(function() {
                         $(conList).removeClass("liSelect");
                         if(index==indexMin){
                             index=indexMax;
-                            $(imgList).eq(indexMin).fadeOut(1000);
+                            $(imgList).eq(indexMin).fadeOut(500);
                             setTimeout(function(){
-                                $(imgList).eq(indexMax).fadeIn(1000);
-                            },1000);
+                                $(imgList).eq(indexMax).fadeIn(500);
+                            },500);
                         }else{
                             index-=1;
-                            $(imgList).eq(index+1).fadeOut(1000);
+                            $(imgList).eq(index+1).fadeOut(500);
                             setTimeout(function(){
-                                $(imgList).eq(index).fadeIn(1000);
-                            },1000);
+                                $(imgList).eq(index).fadeIn(500);
+                            },500);
                         }
                         $(conList).eq(index).addClass("liSelect");
                     }
@@ -95,28 +95,42 @@ $(document).ready(function() {
         }
 
         //左右点击控制
+		var time=Date.parse(new Date());//时间控制，0.8s内仅能点一次,防止多次点击
+		var final=Date.parse(new Date());
         $(toLeft).click(function(){
-            getImgIndex();
-            setTimeout(function(){
-                imgScroll(imgIndex,-1);
-            },500);
-
+			time=Date.parse(new Date());
+			if((time-final)>800){
+				getImgIndex();
+            	setTimeout(function(){
+                	imgScroll(imgIndex,-1);
+            	},200);	
+				final=Date.parse(new Date());
+			}
         });
+		
         $(toRight).click(function(){
-            getImgIndex();
-            setTimeout(function(){
-                imgScroll(imgIndex,1);
-            });
-
+			time=Date.parse(new Date());
+			if((time-final)>800){
+				getImgIndex();
+            	setTimeout(function(){
+                	imgScroll(imgIndex,1);
+            	},200);
+				final=Date.parse(new Date());
+			}
         });
 
         //不动时每过8000ms变化一次,对于首页
-        if(!$(object).find(".innerBox").length){
+		function runStep(){
+			if(!$(object).find(".innerBox").length){//判断是首页
             var timer=setInterval(function(){
-                getImgIndex();
-                imgScroll(imgIndex,1);
-            },8000);
-        }
+                $(toRight).click();
+            	},8000);
+        	}
+		}
+		function stopStep(){
+			clearInterval(timer);
+		}
+		runStep();
 
 
         //不同page区域的length不同
