@@ -145,9 +145,6 @@
     border-radius: 100%;
     behavior:url(js/PIE.htc);
 }
-.perInfo{
-    padding-bottom: 30px;
-}
 .line{
     width: 100%;
     height: 1px;

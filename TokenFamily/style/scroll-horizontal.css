@@ -14,7 +14,7 @@
 }
 .nav{
 	width:100%;
-	position:absolute;
+	position:fixed;
 	top:90px;
 	height:30px;
 	background:rgba(108,108,108,0.7);
@@ -23,19 +23,42 @@
 	z-index:10;
 }
 .navIn{
-	width:1000px;
+	width:1060px;
+    height: 30px;
 	margin:0 auto;
+    overflow: hidden;
+}
+.nav .showleft,.nav .showright{
+    position: relative;
+    cursor: pointer;
+    float: left;
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    color: #fff;
+}
+.nav .showleft:hover,.nav .showright:hover{
+	color:#03FBD0;
+}
+.nav .year{
+    width: 1000px;
+    float: left;
+    overflow: hidden;
 }
 .nav ul{
+    position: relative;
+    width: 2200px;
     color:#fff;
 }
-.nav ul li{
-	width:110px;
+.nav ul li,.nav ul span{
+	width:166px;
 	height:30px;
 	text-align:center;
 	line-height:30px;
 	float:left;
-	cursor:pointer;
+}
+.nav ul li{
+  	cursor:pointer;;
 }
 .nav ul li:hover{
 	color:#03FBD0;

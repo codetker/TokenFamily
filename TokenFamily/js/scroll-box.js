@@ -283,10 +283,11 @@ $(document).ready(function() {
             });
         });
         $(o).parent().parent().parent().find(".md-close").click(function(){
-            $(this).parent().parent().fadeOut(500);
+            /*$(this).parent().parent().fadeOut(500);
             setTimeout(function(){
                 $(this).parent().parent().removeAttr("id").removeClass("md-show md-effect-4");
-            },500);
+            },500);*/
+            $(o).mouseover();
         });
     });
 
@@ -303,9 +304,9 @@ $(document).ready(function() {
     setTimeout(function(){
         $(ob).find(".md-close").css({
             "left":$(ob).width()-42+"px",
-            "bottom":$(ob).height()-45+"px"
+            "bottom":$(ob).height()-110+"px"
         });
-    },100);
+    },200);
 
 
 });

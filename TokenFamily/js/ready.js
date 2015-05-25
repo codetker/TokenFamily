@@ -14,7 +14,7 @@ $(document).ready(function() {
 		$(".cont-dep li").css("border-bottom","none").slideUp("fast");
 	});
 
-    $(".nav ul li").eq(5).click();
+    $(".nav ul li").eq(7).click();//起始页面为2015
 
     
     var resize= function () {

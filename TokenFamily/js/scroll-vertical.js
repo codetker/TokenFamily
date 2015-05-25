@@ -45,7 +45,7 @@ $(document).ready(function(){
 	var guiderID;
 	$(".guider ul li").not(".inner").click(function(){
 		if ($(this).index()>1){
-			guiderID=$(this).index()+3;
+			guiderID=$(this).index()+4;
 		}else if($(this).index()==0){
 			guiderID=1;
 		}
@@ -150,7 +150,7 @@ $(document).ready(function(){
 
 				}
 			}else{
-				if(sIndex==9){
+				if(sIndex==10){
 					crash_bottom(1,target,20,150);
 					showYear();
 				}else{ //往下翻

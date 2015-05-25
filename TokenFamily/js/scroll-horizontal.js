@@ -6,10 +6,38 @@ $(document).ready(function() {
         "height":$(window).height()
     });
 	$(".pageBox").css("width",windowWidth*9);
+
+    $(".stage").each(function(){  //年份的左右滑动
+        var nav=$(this).find('.navIn').children();
+        var ul=$(nav).eq(1).children();
+        $(ul).css("left","-498px");
+        $(nav).eq(0).click(function(){
+            if(parseInt($(ul).css("left"))< 0){
+                setTimeout(function(){
+                    $(ul).animate({
+                        "left":"+="+"166px"
+                    },200);
+                },200);
+
+            }//防止过快点击时判断与移动的时延不对？(setTimeout()未能有效阻止)
+
+        });
+        $(nav).eq(2).click(function(){
+            if(parseInt($(ul).css("left"))> -1162){
+                setTimeout(function(){
+                    $(ul).animate({
+                        "left":"-="+"166px"
+                    },200);
+                },200);
+
+            }
+        });
+
+    });
 	
 	var yearID;  //年份(正数)
 	$(".nav ul li").click(function(){
-		yearID=$(this).index();
+		yearID=$(this).index();  //求index的函数包括span了。。。
 		//alert(yearID);
 	});
 
@@ -19,7 +47,7 @@ $(document).ready(function() {
 	}
 
 	$(".nav ul").delegate("li","click",function(){
-		scrollPage($(".pageBox"),yearID,0);
+		scrollPage($(".pageBox"),yearID-1,0);
 	});
 
 	var scrollPage=function(obj,pIndex,dir){
