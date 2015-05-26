@@ -7,8 +7,8 @@ $(document).ready(function() {
     });
 	$(".pageBox").css("width",windowWidth*9);
 
-    $(".stage").each(function(){  //年份的左右滑动
-        var nav=$(this).find('.navIn').children();
+    /*$(".stage").each(function(){  //年份的左右滑动
+        var nav=$('.navIn').children();
         var ul=$(nav).eq(1).children();
         $(ul).css("left","-498px");
         $(nav).eq(0).click(function(){
@@ -33,7 +33,21 @@ $(document).ready(function() {
             }
         });
 
-    });
+    });*/
+	//代码简化后nav重写
+	var ul=$(".year ul");
+	$(ul).css("left","-498px");
+	$(".showleft").click(function(){
+		if(parseInt($(ul).css("left"))< 0){
+            $(ul).animate({"left":"+="+"166px"},200);
+ 		}
+                
+	});
+	$(".showright").click(function(){
+		if(parseInt($(ul).css("left"))> -1162){
+			$(ul).animate({"left":"-="+"166px"},200);
+		}
+	});
 	
 	var yearID;  //年份(正数)
 	$(".nav ul li").click(function(){
@@ -48,7 +62,7 @@ $(document).ready(function() {
 
 	$(".nav ul").delegate("li","click",function(){
 		scrollPage($(".pageBox"),yearID-1,0);
-	});
+	});//点击一个所有的一起动
 
 	var scrollPage=function(obj,pIndex,dir){
 		var windowobject=obj;

@@ -21,6 +21,7 @@ $(document).ready(function(){
 		},1000,function(){
 			crash_bottom(1,0,20,150);
 		});
+		$(".guide ul li").removeClass("select");
 	});
 
 	var stageIndex;
@@ -54,7 +55,8 @@ $(document).ready(function(){
 		guiderID=$(this).index()+2;
 	});
 
-//隐藏年份
+/*
+//隐藏年份(考虑去掉这个，原因为年份是控制所有的，page控制y轴，year控制x轴，减少开销)
 	function hideYear(){
 		$(".nav").animate({"left":(-1)*$(window).width()+"px"},100,"easeInQuint");
 	}
@@ -63,11 +65,12 @@ $(document).ready(function(){
 		//setTimeout(function(){$(".nav").eq(stageIndex-1).animate({"left":0+"px"},1000,"easeInQuint");},1200);
 		setTimeout(function(){$(".nav").animate({"left":0+"px"},1000,"easeInQuint");},1200);
 	}
+*/
 
 //点击guider时
 	$(".guider ul").delegate("li","click",function(){
 		//跳转到对应页面
-		hideYear();
+		//hideYear();
 		setTimeout(function(){
 			scrollStage(windowobject,guiderID,0); //传入要到的stageindex页码,dir=0时
 		},100);
@@ -83,7 +86,12 @@ $(document).ready(function(){
 	$(".pageFirst .imageBox ul").delegate("img","click",function(){
 		getStageNum();
 		setTimeout(function(){
-			scrollStage(windowobject,stageNum+1,0)
+			if (stageNum<2) {
+				scrollStage(windowobject,stageNum+1,0);
+			}else{
+				scrollStage(windowobject,stageNum+3,0);
+			}
+			
 		},100);
 	});
 
@@ -113,26 +121,26 @@ $(document).ready(function(){
 					"scrollTop": target +"px"
 				},1000,function(){
 					crash_bottom(1,target,20,150);  //调用撞击函数,先撞顶部,target变成当前页面了
-					showYear();
+					//showYear();
 				});
 			}else if($(window).scrollTop() == windowHeight*sIndex){ //当前页面时
 				direction=0;
 				crash_bottom(1, target ,20,150);  //模拟撞底部
-				showYear();
+				//showYear();
 			}else{
 				direction=1;
 				$(windowobject).animate({
 					"scrollTop": target +"px"
 				},1000,function(){
 					crash(1,target,20,150);  //调用撞击函数,先撞底部
-					showYear();
+					//showYear();
 				});
 			}
 		}else{ //响应鼠标滚轮和键盘上下.sIndex为当前页面
 			if(direction==1){
 				if(sIndex==0){
 					crash(1,target,20,150);
-					showYear();
+					//showYear();
 				}else{  //往上翻
 					sIndex-=1;
 					$(s).removeClass("select");
@@ -145,14 +153,14 @@ $(document).ready(function(){
 						"scrollTop":windowHeight*sIndex+"px"
 						},1000,function(){
 							crash_bottom(1,windowHeight*sIndex,20,150);  //调用撞击函数,往下翻内容往上，先撞顶部
-							showYear();
+							//();
 						});
 
 				}
 			}else{
 				if(sIndex==10){
 					crash_bottom(1,target,20,150);
-					showYear();
+					//showYear();
 				}else{ //往下翻
 					sIndex+=1;
 					$(s).removeClass("select");
@@ -165,7 +173,7 @@ $(document).ready(function(){
 						"scrollTop":windowHeight*sIndex+"px"
 					},1000,function(){
 						crash(1,windowHeight*sIndex,20,150);  //调用撞击函数,往上翻内容往下，先撞底部
-						showYear();
+						//showYear();
 					});
 
 				}
@@ -262,7 +270,7 @@ $(document).keydown(function(event){
 	//判断event.keyCode为38（即向上按钮）,往下翻页
 	if (event.keyCode==38) {
         getIndex();
-        hideYear();
+        //hideYear();
 		setTimeout(function(){
 			scrollStage(windowobject,stageIndex,1); //stageIndex为当前页码
 		},100);
@@ -271,7 +279,7 @@ $(document).keydown(function(event){
 	//判断event.keyCode为40（即向下按钮）,往上翻页
 	else if (event.keyCode==40) {
         getIndex();
-        hideYear();
+        //hideYear();
 		setTimeout(function(){
 			scrollStage(windowobject,stageIndex,-1); //stageIndex为当前页码
 		},100);
@@ -314,7 +322,7 @@ var scroF=function(e){
 	//}
 function handle(delta) {
 	getIndex();
-	hideYear();
+	//hideYear();
     if (delta<0) {
 		setTimeout(function(){
 			scrollStage(windowobject,stageIndex,-1); //stageIndex为当前页码

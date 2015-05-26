@@ -191,67 +191,68 @@ $(document).ready(function() {
 		clearInterval(timer);
 	}*/  //是否需要停止下来呢？
 
-    //调用封装函数
-    boxScroll("#stage1 .pageFirst");
-    $(".stage").each(function(){
-        $(this).find(".page").each(function(){
-            boxScroll(this);
-        });
-    });
-
-    //设计人物展示区域
-    var showHeight=Math.floor(($(window).height()*0.95-120)*0.9);
-    var showTop=Math.floor(showHeight*0.05/0.9);
-    $(".stage").find(".innerBox").css({  //给人物展示设置空间
-        "height":showHeight+"px",
-        "min-height":"405px",
-        "margin-top":showTop+120+"px",
-        "width":"80%",
-        "min-width":"800px",
-        "position":"relative",
-        "left":"10%"
-    });
-
-    var x=".innerBox ul li";  //全局变量
-    $(x).css({
-        "width":Math.round($(window).width()*0.16-40)+"px",
-        "min-width":"120px",
-        "height":Math.floor((showHeight/3)-20)+20+"px",
-        "min-height":"105px"
-    });
-    var liHeight=$(x).height();
-    var liWidth=$(x).width();
-    $(".img").css({
-        "width":liWidth+"px",
-        "height":liHeight+"px"
-    });
-    $(".img img").css({
-        "width":liHeight-40+"px",
-        "height":liHeight-40+"px",
-        "margin-left":Math.round((liWidth-liHeight)/2)+20+"px"
-    });
-
-    //鼠标移动到img上变大，移开后缩小
-    /*var twidth=$(x).find(".picBox").width();
-     var tmpLeft=parseInt($(x).find(".picBox img").css("margin-left"));
-     var tmpWidth=$(x).find(".picBox img").width();    //find少用*/
-    $(x).each(function(){
-        var o=$(this).children().eq(0).children().children().eq(0);
-        var twidth=$(o).width();
-        var tmpLeft=parseInt($(o).find("img").css("margin-left"));
-        var tmpWidth=$(o).find("img").width();
-        $(o).mouseover(function(){
-            $(this).find("img").animate({
-                "margin-left":"10px",
-                "margin-top":"-10px",
-                "width":twidth-20+"px",
-                "height":twidth-20+"px"
-            },200);
-            $(this).parent().attr("data-modal","modal-4");
-            $(this).parent().parent().parent().find(".outBox").attr({
-                "class":"outBox md-modal md-effect-4",
-                "id":"modal-4"
+    //定时后调用封装函数，保证data.js执行完毕
+    setTimeout(function(){
+        boxScroll("#stage1 .pageFirst");
+            $(".stage").each(function(){
+            $(this).find(".page").each(function(){
+                boxScroll(this);
             });
+        });
+
+         //设计人物展示区域
+        var showHeight=Math.floor(($(window).height()*0.95-120)*0.9);
+        var showTop=Math.floor(showHeight*0.05/0.9);
+        $(".stage").find(".innerBox").css({  //给人物展示设置空间
+            "height":showHeight+"px",
+            "min-height":"405px",
+            "margin-top":showTop+120+"px",
+            "width":"80%",
+            "min-width":"800px",
+            "position":"relative",
+            "left":"10%"
+        });
+
+        var x=".innerBox ul li";  //全局变量
+        $(x).css({
+            "width":Math.round($(window).width()*0.16-40)+"px",
+            "min-width":"120px",
+            "height":Math.floor((showHeight/3)-20)+20+"px",
+            "min-height":"105px"
+        });
+        var liHeight=$(x).height();
+        var liWidth=$(x).width();
+        $(".img").css({
+            "width":liWidth+"px",
+            "height":liHeight+"px"
+        });
+        $(".img img").css({
+            "width":liHeight-40+"px",
+            "height":liHeight-40+"px",
+            "margin-left":Math.round((liWidth-liHeight)/2)+20+"px"
+        });
+
+        //鼠标移动到img上变大，移开后缩小
+        /*var twidth=$(x).find(".picBox").width();
+        var tmpLeft=parseInt($(x).find(".picBox img").css("margin-left"));
+        var tmpWidth=$(x).find(".picBox img").width();    //find少用*/
+        $(x).each(function(){
+            var o=$(this).children().eq(0).children().children().eq(0);
+            var twidth=$(o).width();
+            var tmpLeft=parseInt($(o).find("img").css("margin-left"));
+            var tmpWidth=$(o).find("img").width();
+            $(o).mouseover(function(){
+                $(this).find("img").animate({
+                    "margin-left":"10px",
+                    "margin-top":"-10px",
+                    "width":twidth-20+"px",
+                    "height":twidth-20+"px"
+                },200);
+                $(this).parent().attr("data-modal","modal-4");
+                $(this).parent().parent().parent().find(".outBox").attr({
+                    "class":"outBox md-modal md-effect-4",
+                    "id":"modal-4"
+                });
             /*$(this).attr({
                 "data-modal":"modal-4",
                 "class":"md-trigger img"
@@ -260,53 +261,54 @@ $(document).ready(function() {
                 "class":"md-modal md-effect-4",
                 "id":"modal-4"
             });*/
-        });
-        $(o).mouseleave(function(){
-            $(this).find("img").animate({
-                "margin-left":tmpLeft+"px",
-                "margin-top":"0px",
-                "width":tmpWidth+"px",
-                "height":tmpWidth+"px"
+            });
+            $(o).mouseleave(function(){
+                $(this).find("img").animate({
+                    "margin-left":tmpLeft+"px",
+                    "margin-top":"0px",
+                    "width":tmpWidth+"px",
+                    "height":tmpWidth+"px"
 
-            },200);
-            //$(this).removeAttr("data-modal");
-            //$(this).parent().parent().parent().find(".outBox").removeAttr("id").attr("class","outBox hidden");
-            $(this).parent().removeAttr("data-modal");
-            //$(this).parent().parent().parent().find(".outBox").removeAttr("id").removeAttr("class").attr("class","outBox md-modal ms-show");
-        });
-        $(o).click(function(){
+                },200);
+                //$(this).removeAttr("data-modal");
+                //$(this).parent().parent().parent().find(".outBox").removeAttr("id").attr("class","outBox hidden");
+                $(this).parent().removeAttr("data-modal");
+                //$(this).parent().parent().parent().find(".outBox").removeAttr("id").removeAttr("class").attr("class","outBox md-modal ms-show");
+            });
+            $(o).click(function(){
 
-            $(this).parent().attr("data-modal","modal-4");
-            $(this).parent().parent().parent().find(".outBox").attr({
-                "class":"outBox md-modal md-effect-4 md-show",   //手动添加居然可以！！！
-                "id":"modal-4"
+                $(this).parent().attr("data-modal","modal-4");
+                $(this).parent().parent().parent().find(".outBox").attr({
+                    "class":"outBox md-modal md-effect-4 md-show",   //手动添加居然可以！！！
+                    "id":"modal-4"
+                });
+            });
+            $(o).parent().parent().parent().find(".md-close").click(function(){
+                /*$(this).parent().parent().fadeOut(500);
+                setTimeout(function(){
+                    $(this).parent().parent().removeAttr("id").removeClass("md-show md-effect-4");
+                },500);*/
+                $(o).mouseover();
             });
         });
-        $(o).parent().parent().parent().find(".md-close").click(function(){
-            /*$(this).parent().parent().fadeOut(500);
-            setTimeout(function(){
-                $(this).parent().parent().removeAttr("id").removeClass("md-show md-effect-4");
-            },500);*/
-            $(o).mouseover();
-        });
-    });
 
-    /*$(".outBox").css({
-        "width":$(".innerBox").width()*0.4+"px",
-        "height":$(".innerBox").height()+"px",
-        "left":$(".innerBox").width()*0.3+"px"
-    });*/
-    var ob=".md-content";
-    $(".bigPic").css({
-        "width":$(ob).width()*0.6+"px",
-        "height":$(ob).width()*0.6+"px"
-    });
-    setTimeout(function(){
-        $(ob).find(".md-close").css({
-            "left":$(ob).width()-42+"px",
-            "bottom":$(ob).height()-110+"px"
+        /*$(".outBox").css({
+            "width":$(".innerBox").width()*0.4+"px",
+            "height":$(".innerBox").height()+"px",
+            "left":$(".innerBox").width()*0.3+"px"
+        });*/
+        var ob=".md-content";
+        $(".bigPic").css({
+            "width":$(ob).width()*0.6+"px",
+            "height":$(ob).width()*0.6+"px"
         });
-    },200);
+        setTimeout(function(){
+            $(ob).find(".md-close").css({
+                "left":$(ob).width()-42+"px",
+                "bottom":$(ob).height()-50+"px"
+            });
+        },200);
 
+    },1500);
 
 });

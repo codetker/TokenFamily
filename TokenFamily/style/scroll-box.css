@@ -186,7 +186,10 @@
 
 
 /* outBox样式 */
+
 .md-content {
+    width: 100%;
+    height: 100%;
     cursor: auto;
     color: #555;
     font-size: 16px;
@@ -245,4 +248,14 @@
     opacity: 1;
 }
 
-
+.searchButton .md-content{
+    position: fixed;
+    top: 25%;
+    left: 37.5%;
+    width: 25%;
+    max-width: 630px;
+    min-width: 320px;
+    height: auto;
+    z-index: 2000;
+    display: none;
+}

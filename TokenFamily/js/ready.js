@@ -1,11 +1,21 @@
 // JavaScript Document
 $(document).ready(function() {
-	$(".people").focus(function(){
-		this.value=="搜索Token成员"? this.value="" : this.value=this.value;
-	});
-	$(".people").blur(function(){
-		this.value==""? this.value="搜索Token成员" : this.value=this.value;
-	});
+    $(".people").focus(function(){
+        this.value=="搜索Token成员"? this.value="" : this.value=this.value;
+    });
+    $(".people").blur(function(){
+        this.value==""? this.value="搜索Token成员" : this.value=this.value;
+    });
+
+    $(".searchButton").find(".md-close").click(function(){
+        setTimeout(function(){
+            $(".searchButton").children().eq(1).fadeOut("slow");
+        },500);//0.5s等待数据
+    });
+    $(".searchButton").children().eq(0).click(function(){
+        $(".searchButton").children().eq(1).fadeIn("slow");
+    });//fadeIn(),fadeOut()?
+    //已经在.searchButton img 上定义了click()方法，需要拉取数据和显示则使用事件委托，见search.js
 	
 	$(".cont-dep").mouseenter(function(){
 		$(".cont-dep li").slideDown("fast").css("border-bottom","1px solid #8F8E8E");
