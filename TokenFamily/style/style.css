@@ -7,5 +7,32 @@ body{
 	height:100%;
 	width:100%;
 }
+.s_form{top:0}
+.s_form_wrapper{top:0}
+
+#wrapper {
+    position: fixed;
+    _position:;
+    min-height: 100%
+}
+
+#wrapper {
+	width:100%;
+    min-width: 810px;
+    height: 100%;
+    min-height: 600px;
+	background-color:#000;
+}
+.load{
+	color:#fff;
+	position:relative;
+	width:20%;
+	left:40%;
+}
+.load p{
+	font-family:"微软雅黑";
+	font-size:20px;
+	text-align:center;
+}
 
 

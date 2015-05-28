@@ -111,41 +111,43 @@ function depData(dep,data){
         //var endtime= (end==0? "至今": data[i].endtime);  保留数据绑定的时候再用
 
         for(;x<=y;x++){
-            switch (x){
-            case 0:
-                data08.push(data[i]);
-                break;
-            case 1:
-                data09.push(data[i]);
-                break;
-            case 2:
-                data10.push(data[i]);
-                break;
-            case 3:
-                data11.push(data[i]);
-                break;
-            case 4:
-                data12.push(data[i]);
-                break;
-            case 5:
-                data13.push(data[i]);
-                break;
-            case 6:
-                data14.push(data[i]);
-                break;
-            case 7:
-                data15.push(data[i]);
-                break;
-            case 8:
-                data16.push(data[i]);
-                break;
-            case 9:
-                data17.push(data[i]);
-                break;
-            case 10:
-                data18.push(data[i]);
-                break;
-            default:break; //out of year area
+            if(data[i].zhiwu.indexOf("实习")<0){
+                switch (x){
+                case 0:
+                    data08.push(data[i]);
+                    break;
+                case 1:
+                    data09.push(data[i]);
+                    break;
+                case 2:
+                    data10.push(data[i]);
+                    break;
+                case 3:
+                    data11.push(data[i]);
+                    break;
+                case 4:
+                    data12.push(data[i]);
+                    break;
+                case 5:
+                    data13.push(data[i]);
+                    break;
+                case 6:
+                    data14.push(data[i]);
+                    break;
+                case 7:
+                    data15.push(data[i]);
+                    break;
+                case 8:
+                    data16.push(data[i]);
+                    break;
+                case 9:
+                    data17.push(data[i]);
+                    break;
+                case 10:
+                    data18.push(data[i]);
+                    break;
+                default:break; //out of year area
+                }
             }
         }
     }
@@ -164,7 +166,7 @@ function depData(dep,data){
         dataFix(dep,8,data16);
         dataFix(dep,9,data17);
         dataFix(dep,10,data18);
-    },300);
+    },1000);
     
 }
 
@@ -241,7 +243,7 @@ setTimeout(function(){
         depData("#stage8",DB6);
 
     //在这里添加li后绑定数据
-},500);
+},2000);
 //至此数据已经分完了
 
 
@@ -260,7 +262,7 @@ for (var i = 0; i < mName14.length; i++) {
 }
 setTimeout(function(){
     dataFix("#stage2",6,DB014);
-},800);
+},3000);
 for (var i = 0; i < mName15.length; i++) {
     $.getJSON(
         "http://wechat.wutnews.net/Web/Admin/Api/detail_name.html?name="+mName15[i],
@@ -271,7 +273,7 @@ for (var i = 0; i < mName15.length; i++) {
 };
 setTimeout(function(){
     dataFix("#stage2",7,DB015);
-},800);
+},3000);
 
 
 /*
