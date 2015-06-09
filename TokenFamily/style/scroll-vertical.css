@@ -111,34 +111,45 @@ html{
 	overflow: hidden;
 }
 #stage1{
+	background-color: #ddd;
 }
 #stage2{
-	background-color:#97d3ff;
+	background:url(../images/glc.jpg);
+	background-color: #b9f579;
 }
 #stage3{
-	background-color:#ffb291;
+	background:url(../images/xw.jpg);
+	background-color:#d87efa;
 }
 #stage4{
-	background-color:#ffc437;
+	background:url(../images/sz.jpg);
+	background-color:#f97171;
 }
 #stage5{
-	background-color:#fff45c;
+	background:url(../images/xy.jpg);
+	background-color:#ffc438;
 }
 #stage6{
-	background-color:#b7e8fc;
+	background:url(../images/syb.jpg);
+	background-color:#9ff4d5;
 }
 #stage7{
-	background-color:#b6befc;
+	background:url(../images/rlzyb.jpg);
+	background-color:#fca172;
 }
 #stage8{
-	background-color:#85d696;
+	background:url(../images/cpb.jpg);
+	background-color:#b6befc;
 }
 #stage9{
-	background-color:#1cc5a6;
+	background:url(../images/sjb.jpg);
+	background-color:#77f0f8;
 }
 #stage10{
-	background-color:#beede7;
+	background:url(../images/jsb.jpg);
+	background-color:#3aa4f8;
 }
 #stage11{
-	background-color:#ade7bf;
+	background:url(../images/yyb.jpg);
+	background-color:#3aa4f8;
 }

@@ -52,8 +52,16 @@ $(document).ready(function(){
 		}
 	});
 	$(".inner").click(function(){
-		guiderID=$(this).index()+2;
+		guiderID=$(this).index()+1;
 	});
+
+	setInterval(function(){
+		if ($(".inner").hasClass('select')) {
+			$(".cont-dep p").css("color","#06F53F");
+		}else{
+			$(".cont-dep p").css("color","#fff");
+		}
+	},100);
 
 /*
 //隐藏年份(考虑去掉这个，原因为年份是控制所有的，page控制y轴，year控制x轴，减少开销)
@@ -282,6 +290,13 @@ $(document).keydown(function(event){
         //hideYear();
 		setTimeout(function(){
 			scrollStage(windowobject,stageIndex,-1); //stageIndex为当前页码
+		},100);
+
+	}
+	else if (event.keyCode==13) {  //绑定enter       27Esc    113F2
+		setTimeout(function(){
+			//绑定搜索的enter事件
+			$(".searchButton img").click();
 		},100);
 
 	}

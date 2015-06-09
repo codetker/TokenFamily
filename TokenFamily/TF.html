@@ -15,7 +15,7 @@
 <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
 <script type="text/javascript" src="js/token.js"></script>
 <script type="text/javascript">
-        var time=5;
+        var time=8;
         var tmp=setInterval(function(){
             if(time>=0){
                 $(".load").find("b").text(time+"s");
@@ -24,6 +24,12 @@
                 clearInterval(tmp);
             }
         },1000);
+</script>
+<script type="text/javascript">
+setTimeout(function(){
+    $("#wrapper").fadeOut();
+    $("#cont").css("visibility","visible");
+},8000);
 </script>
 <script src="js/data.js"></script>
 </head>
@@ -54,7 +60,7 @@
     		<ul>
         		<li>管理层</li>
            	 	<li>
-            		<ul class="cont-dep">内容部
+            		<ul class="cont-dep"><p>内容部</p>
             			<li class="inner" style="margin-top:5px;">新闻经纬</li>
                    		<li class="inner">时政视窗</li>
                    		<li class="inner">校园文化</li>
@@ -124,28 +130,28 @@
                 	<div class="imageShow">
                     	<ul>
                         	<li>
-                                <img src="images/管理层.jpg" alt="管理层">
+                                <img src="images/管理层.png" alt="管理层">
                             </li>
                             <li>
-                                <img src="images/内容部.jpg" alt="内容部">
+                                <img src="images/内容部.png" alt="内容部">
                             </li>
                             <li>
-                                <img src="images/摄影部.jpg" alt="摄影部">
+                                <img src="images/摄影部.png" alt="摄影部">
                             </li>
                             <li>
-                                <img src="images/人力資源部.jpg" alt="人力資源部">
+                                <img src="images/人力资源部.png" alt="人力資源部">
                             </li>
                             <li>
-                                <img src="images/产品部.jpg" alt="产品部">
+                                <img src="images/产品部.png" alt="产品部">
                             </li>
                             <li>
-                                <img src="images/设计部.jpg" alt="设计部">
+                                <img src="images/设计部.png" alt="设计部">
                             </li>
                             <li>
-                                <img src="images/技术部.jpg" alt="技术部">
+                                <img src="images/技术部.png" alt="技术部">
                             </li>
                             <li>
-                                <img src="images/运营部.jpg" alt="运营部">
+                                <img src="images/运营部.png" alt="运营部">
                             </li>
                         </ul>
                     </div>
@@ -1757,12 +1763,6 @@
 <script>
     // this is important for IEs
     var polyfilter_scriptpath = '/js/';
-</script>
-<script type="text/javascript">
-setTimeout(function(){
-    $("#wrapper").fadeOut();
-    $("#cont").css("visibility","visible");
-},10000);
 </script>
 </body>
 </html>

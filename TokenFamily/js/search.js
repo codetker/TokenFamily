@@ -20,7 +20,7 @@ $(document).ready(function(){
                 function(data) {
                     back=data;
                 }
-            );//给0.5s取数据
+            );//给0.4s取数据
             setTimeout(function(){
                 if (back=="") {
                     back[0]="请检查输入是否错误";
@@ -69,7 +69,7 @@ $(document).ready(function(){
                     $(obj).find(".position").html('<i>'+task+'</i>');
                     $(obj).find(".perInfo").html('<p>'+back[0].college +'</p>'+'<p>'+back[0].zhiwu +'</p>'+'<p>'+ back[0].zhuanye +'</p>'+'<p>'+back[0].starttime+'-'+ back[0].endtime +'</p>');
                 }
-            },500);
+            },400);
         }    
     });
 

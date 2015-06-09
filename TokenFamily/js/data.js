@@ -24,7 +24,7 @@ function dataFix(dep,index,o){
         $(page).find(".imageControl ul").css("display","none"); 
     }
 
-    var liCon=" <li><div class='inBox'><div class='picBox md-trigger' data-modal='modal-4'><div class='img'><img src='' alt=''></div><p></p></div></div><div class='outBox md-modal md-effect-4' ><div class='md-content'><div class='bigPic'><img src='' alt=''></div><div class='info'><p class='name'></p><p class='position'></p></div><div class='line'></div><div class='perInfo'></div><div class='md-close'>×</div></div></div></li>" ;
+    var liCon=" <li><div class='inBox'><div class='picBox md-trigger' data-modal='modal-4'><div class='img'><img src='' alt=''></div><p></p></div></div><div class='mask'><div class='outBox md-modal md-effect-4' ><div class='md-content'><div class='bigPic'><img src='' alt=''></div><div class='info'><p class='name'></p><p class='position'></p></div><div class='line'></div><div class='perInfo'></div><div class='md-close'>×</div></div></div></div></li>" ;
     for (var i = 1; i<=conNum ; i++) {//动态添加li
         $(page).find(".imageControl ul").append("<li></li>");
         $(page).find(".imageShow").children().eq(0).append('<li><div class="innerBox"><ul></ul></div></li>'); //新加的里面有ul，防止形成循环嵌套
@@ -84,6 +84,13 @@ function depData(dep,data){
     var data16=new Array();
     var data17=new Array();
     var data18=new Array();
+    var tmpn=-1;
+    if (!data.length) {  //当是对象时,赋值data.length属性
+        for(p in data){
+            tmpn+=1;
+        }
+        data.length=tmpn;
+    }
     for(i=0;i<data.length;i++){  //对每一个数据分年处理
 
         //首先处理年份，好按照年份分类
@@ -106,6 +113,7 @@ function depData(dep,data){
                 // 5.starttime==0    && endtime==0     satrt=now ; end=0 
                 // 6.starttime==sta  && endtime==0     satrt=sta ; end=0    sta代表正常的starttime 
                 // 7.starttime==     && endtime==      satrt=    ; end=
+        data[i].endtime=end;  //意图修改endtime标准点，但是貌似不行，还是把后台数据修改好再改好了
         var x=start-2008;
         var y=(end==0)? now-2008 : end-2008;  //现任则为当前年份
         //var endtime= (end==0? "至今": data[i].endtime);  保留数据绑定的时候再用
@@ -166,7 +174,8 @@ function depData(dep,data){
         dataFix(dep,8,data16);
         dataFix(dep,9,data17);
         dataFix(dep,10,data18);
-    },1000);
+    },2000);
+        
     
 }
 
@@ -176,6 +185,8 @@ var DB3=new Array();
 var DB4=new Array(); 
 var DB5=new Array(); 
 var DB6=new Array(); 
+var n3=-1;
+// var n1=-1,n2=-1,n3=-1,n4=-1,n5=-1,n6=-1;  //改变接口后只能获取到对象，用于存储对象的属性数目
 
 $.getJSON(
     "http://wechat.wutnews.net/Web/Admin/Api/detail_dep.html?dep=1",
@@ -183,36 +194,64 @@ $.getJSON(
         DB1=data;
     }
 );    //得到数据
+/*for(p in DB01){   //枚举对象属性仅获得属性名
+    DB1.push(p);
+}*/
+/*for(p in DB1){
+    n1+=1;
+}*/
+
 $.getJSON(
     "http://wechat.wutnews.net/Web/Admin/Api/detail_dep.html?dep=2",
     function(data) {
         DB2=data;
     }
 ); 
+/*for(p in DB2){
+    n2+=1;
+}*/
+
 $.getJSON(
     "http://wechat.wutnews.net/Web/Admin/Api/detail_dep.html?dep=3",
     function(data) {
         DB3=data;
     }
 ); 
+setTimeout(function(){
+    for(p in DB3){
+        n3+=1;
+    } //要分类，先取出来
+},1000);
+
 $.getJSON(
     "http://wechat.wutnews.net/Web/Admin/Api/detail_dep.html?dep=4",
     function(data) {
         DB4=data;
     }
 ); 
+/*for(p in DB4){
+    n4+=1;
+}*/
+
 $.getJSON(
     "http://wechat.wutnews.net/Web/Admin/Api/detail_dep.html?dep=5",
     function(data) {
         DB5=data;
     }
 ); 
+/*for(p in DB5){
+    n5+=1;
+}*/
+
 $.getJSON(
     "http://wechat.wutnews.net/Web/Admin/Api/detail_dep.html?dep=6",
     function(data) {
         DB6=data;
     }
 ); 
+/*for(p in DB6){
+    n6+=1;
+}*/
 
 //由于取数据需要时间，算时间差,职务里面没有加关键字段的秋后算账
 var DB31=new Array();
@@ -221,7 +260,7 @@ var DB33=new Array();
 var DB34=new Array();
 setTimeout(function(){
     //对DB3进行分解好方便后面数据
-    for(var temp=0;temp<DB3.length;temp++){
+    for(var temp=0;temp < n3 ;temp++){
         if (DB3[temp].zhiwu.indexOf("新闻")>=0) {
             DB31.push(DB3[temp]);
         }else if(DB3[temp].zhiwu.indexOf("时政")>=0){
@@ -243,7 +282,7 @@ setTimeout(function(){
         depData("#stage8",DB6);
 
     //在这里添加li后绑定数据
-},2000);
+},3000);
 //至此数据已经分完了
 
 

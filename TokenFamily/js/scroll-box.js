@@ -37,10 +37,11 @@ $(document).ready(function() {
 
             if(!$(box).is(":animated")){  //在没有动作时执行函数
                 if(!direction){ //先讨论点击control框时(direction传入0，index表示目标图片编号)
-                    $(imgList).siblings().fadeOut(500);
+                    // stopStep()
+                    $(imgList).siblings().fadeOut(300);
                     setTimeout(function(){
                         $(imgList).eq(index).fadeIn(500);
-                    },500);
+                    },100);
 
                     $(conList).removeClass("liSelect");
                     $(conList).eq(index).addClass("liSelect");
@@ -49,16 +50,16 @@ $(document).ready(function() {
                         $(conList).removeClass("liSelect");
                         if(index==indexMax){
                             index=indexMin;
-                            $(imgList).eq(indexMax).fadeOut(500);
+                            $(imgList).eq(indexMax).fadeOut(300);
                             setTimeout(function(){
                                 $(imgList).eq(indexMin).fadeIn(500);
-                            },500);
+                            },100);
                         }else{
                             index+=1;
-                            $(imgList).eq(index-1).fadeOut(500);
+                            $(imgList).eq(index-1).fadeOut(300);
                             setTimeout(function(){
                                 $(imgList).eq(index).fadeIn(500);
-                            },500);
+                            },100);
                         }
                         $(conList).eq(index).addClass("liSelect");
 
@@ -66,16 +67,16 @@ $(document).ready(function() {
                         $(conList).removeClass("liSelect");
                         if(index==indexMin){
                             index=indexMax;
-                            $(imgList).eq(indexMin).fadeOut(500);
+                            $(imgList).eq(indexMin).fadeOut(300);
                             setTimeout(function(){
                                 $(imgList).eq(indexMax).fadeIn(500);
-                            },500);
+                            },100);
                         }else{
                             index-=1;
-                            $(imgList).eq(index+1).fadeOut(500);
+                            $(imgList).eq(index+1).fadeOut(300);
                             setTimeout(function(){
                                 $(imgList).eq(index).fadeIn(500);
-                            },500);
+                            },100);
                         }
                         $(conList).eq(index).addClass("liSelect");
                     }
@@ -95,42 +96,42 @@ $(document).ready(function() {
         }
 
         //左右点击控制
-		var time=Date.parse(new Date());//时间控制，0.8s内仅能点一次,防止多次点击
-		var final=Date.parse(new Date());
+        var time=Date.parse(new Date());//时间控制，0.8s内仅能点一次,防止多次点击
+        var final=Date.parse(new Date());
         $(toLeft).click(function(){
-			time=Date.parse(new Date());
-			if((time-final)>800){
-				getImgIndex();
-            	setTimeout(function(){
-                	imgScroll(imgIndex,-1);
-            	},200);	
-				final=Date.parse(new Date());
-			}
+            time=Date.parse(new Date());
+            if((time-final)>800){
+                getImgIndex();
+                setTimeout(function(){
+                    imgScroll(imgIndex,-1);
+                },200); 
+                final=Date.parse(new Date());
+            }
         });
-		
+        
         $(toRight).click(function(){
-			time=Date.parse(new Date());
-			if((time-final)>800){
-				getImgIndex();
-            	setTimeout(function(){
-                	imgScroll(imgIndex,1);
-            	},200);
-				final=Date.parse(new Date());
-			}
+            time=Date.parse(new Date());
+            if((time-final)>800){
+                getImgIndex();
+                setTimeout(function(){
+                    imgScroll(imgIndex,1);
+                },200);
+                final=Date.parse(new Date());
+            }
         });
 
         //不动时每过8000ms变化一次,对于首页
-		function runStep(){
-			if(!$(object).find(".innerBox").length){//判断是首页
+        function runStep(){
+            if(!$(object).find(".innerBox").length){//判断是首页
             var timer=setInterval(function(){
                 $(toRight).click();
-            	},8000);
-        	}
-		}
-		function stopStep(){
-			clearInterval(timer);
-		}
-		runStep();
+                },8000);
+            }
+        }
+        function stopStep(){
+            clearInterval(timer);
+        }
+        runStep();
 
 
         //不同page区域的length不同
@@ -147,49 +148,49 @@ $(document).ready(function() {
 
     }
 
-	/*function imgScroll(obj,imgIndex,dir){
-		var object=obj;  //操作对象(stage中的page对象)
-		var index=imgIndex; //点击下方imgControl时使用
-		var direction=dir; //左右点击时使用，右击为1，左击为0
-		var indexMax=$(object).find("ul li").length-1;
-		var indexMin=0;
+    /*function imgScroll(obj,imgIndex,dir){
+        var object=obj;  //操作对象(stage中的page对象)
+        var index=imgIndex; //点击下方imgControl时使用
+        var direction=dir; //左右点击时使用，右击为1，左击为0
+        var indexMax=$(object).find("ul li").length-1;
+        var indexMin=0;
         var liSpace=Math.floor(($(".imageControl").width() - 20*(indexMax+1))/(indexMax));
         $(".imageControl li").not(":first").css("margin-left",liSpace+"px");
 
-		if(!$(object).is(":animated")){  //在没有动作时执行函数
-			if(!direction){ //先讨论点击control框时(direction传入0，index表示目标图片编号)
-				$(object).find("li").eq(index).siblings().fadeOut(1000);
-				$(object).find("li").eq(index).fadeIn(1000);
-			}else{  //点击左右时
-				if(direction==1){ //往右的顺序,index表示当前值
-					if(index==indexMax){
-						index=indexMin;
-						$(object).find("li").eq(indexMax).fadeOut(1000);
-						$(object).find("li").eq(indexMin).fadeIn(1000);
-					}else{
-						index+=1;
-						$(object).find("li").eq(index-1).fadeOut(1000);
-						$(object).find("li").eq(index).fadeIn(1000);
-					}
+        if(!$(object).is(":animated")){  //在没有动作时执行函数
+            if(!direction){ //先讨论点击control框时(direction传入0，index表示目标图片编号)
+                $(object).find("li").eq(index).siblings().fadeOut(1000);
+                $(object).find("li").eq(index).fadeIn(1000);
+            }else{  //点击左右时
+                if(direction==1){ //往右的顺序,index表示当前值
+                    if(index==indexMax){
+                        index=indexMin;
+                        $(object).find("li").eq(indexMax).fadeOut(1000);
+                        $(object).find("li").eq(indexMin).fadeIn(1000);
+                    }else{
+                        index+=1;
+                        $(object).find("li").eq(index-1).fadeOut(1000);
+                        $(object).find("li").eq(index).fadeIn(1000);
+                    }
 
-				}else{
-					if(index==indexMin){
-						index=indexMax;
-						$(object).find("li").eq(indexMin).fadeOut(1000);
-						$(object).find("li").eq(indexMax).fadeIn(1000);
-					}else{
-						index-=1;
-						$(object).find("li").eq(index+1).fadeOut(1000);
-						$(object).find("li").eq(index).fadeIn(1000);
-					}
-				}
-			}
-		}
-	}*/
+                }else{
+                    if(index==indexMin){
+                        index=indexMax;
+                        $(object).find("li").eq(indexMin).fadeOut(1000);
+                        $(object).find("li").eq(indexMax).fadeIn(1000);
+                    }else{
+                        index-=1;
+                        $(object).find("li").eq(index+1).fadeOut(1000);
+                        $(object).find("li").eq(index).fadeIn(1000);
+                    }
+                }
+            }
+        }
+    }*/
 
-	/*var timeDown=function(){
-		clearInterval(timer);
-	}*/  //是否需要停止下来呢？
+    /*var timeDown=function(){
+        clearInterval(timer);
+    }*/  //是否需要停止下来呢？
 
     //定时后调用封装函数，保证data.js执行完毕
     setTimeout(function(){
@@ -282,12 +283,14 @@ $(document).ready(function() {
                     "class":"outBox md-modal md-effect-4 md-show",   //手动添加居然可以！！！
                     "id":"modal-4"
                 });
+                $(this).parent().parent().parent().find(".mask").addClass("maskS");
             });
             $(o).parent().parent().parent().find(".md-close").click(function(){
                 /*$(this).parent().parent().fadeOut(500);
                 setTimeout(function(){
                     $(this).parent().parent().removeAttr("id").removeClass("md-show md-effect-4");
                 },500);*/
+                $(o).parent().parent().parent().find(".mask").removeClass("maskS");
                 $(o).mouseover();
             });
         });
@@ -309,6 +312,6 @@ $(document).ready(function() {
             });
         },200);
 
-    },4000);
+    },7000);
 
 });
