@@ -117,7 +117,7 @@ $(document).ready(function() {
 			getPageIndex();
 			scrollPage($(".pageBox"),pageIndex,-1); 
 		}
-	//判断event.keyCode为37（即向左按钮
+		//判断event.keyCode为37（即向左按钮
 		else if (event.keyCode==37) {
 			getPageIndex();
 			scrollPage($(".pageBox"),pageIndex,1);

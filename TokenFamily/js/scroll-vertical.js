@@ -197,7 +197,7 @@ var stop=0;
 //撞击函数
 function crash_bottom(direction,termin,distant,time){
 	if (!stop) {
-		var scrollTop=$(window).scrollTop;
+		var scrollTop=$(window).scrollTop();
 		if (direction==1) {
 			direction=0;
 			$(windowobject).animate({"scrollTop":"+="+distant+"px"},time,function(){
@@ -227,7 +227,7 @@ function crash_bottom(direction,termin,distant,time){
 }
 function crash(direction,termin,distant,time){
 	if (!stop) {
-		var scrollTop=$(window).scrollTop;
+		var scrollTop=$(window).scrollTop();
 		if (direction==1) {
 			direction=0;
 			$(windowobject).animate({"scrollTop":"-="+distant+"px"},time,function(){

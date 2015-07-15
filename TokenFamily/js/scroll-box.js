@@ -195,7 +195,7 @@ $(document).ready(function() {
     //定时后调用封装函数，保证data.js执行完毕
     setTimeout(function(){
         boxScroll("#stage1 .pageFirst");
-            $(".stage").each(function(){
+        $(".stage").each(function(){
             $(this).find(".page").each(function(){
                 boxScroll(this);
             });
