@@ -6,31 +6,30 @@
 <meta name="author" content="TokenFamily" />
 <head>
 <title>Token Family</title>
-<link href="style/reset.css" rel="stylesheet" type="text/css">
-<link href="style/style.css" rel="stylesheet" type="text/css">
-<link href="style/scroll-vertical.css" rel="stylesheet" type="text/css">
-<link href="style/scroll-horizontal.css" rel="stylesheet" type="text/css">
-<link href="style/scroll-box.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" href="style/style.css">
 
 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="js/token.js"></script>
+
 <script type="text/javascript">
-    var time=5;
-    var tmp=setInterval(function(){
-        if(time>=0){
-            $(".load").find("b").text(time+"s");
-            time--;
-        }else{
-            clearInterval(tmp);
-        }
-    },1000);
+    var time = 4,
+        tmp = setInterval(function() {
+            if (time >= 0) {
+                $(".load").find("b").text(time + "s");
+                time--;
+            } else {
+                clearInterval(tmp);
+            }
+        }, 1000);
 </script>
 <script type="text/javascript">
-setTimeout(function(){
-    $("#wrapper").fadeOut();
-    $("#cont").css("visibility","visible");
-},5000);
+    setTimeout(function() {
+        $("#wrapper").fadeOut();
+        $("#cont").css("visibility", "visible");
+    }, 5000);
 </script>
+
 </head>
 
 <body scroll="no">
@@ -80,27 +79,27 @@ setTimeout(function(){
             <div class="searchButton">
             	<img src="images/search.png" alt="搜索">
                 <div class="md-content ">
-                    <div class="bigPic">
-                        <img src="" alt="">
-                    </div>
-                    <div class="info">
-                        <p class="name"></p>
-                        <p class="position"><i></i></p>
-                    </div>
-                    <div class="line"></div>
-                    <div class="perInfo">
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                    </div>
-                    <div class="md-close">×</div>
+                        <div class="bigPic">
+                            <img src="" alt="">
+                        </div>
+                        <div class="info">
+                            <p class="name"></p>
+                            <p class="position"><i></i></p>
+                        </div>
+                        <div class="line"></div>
+                        <div class="perInfo">
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                        </div>
+                        <div class="md-close">×</div>
                 </div>
             </div>
         </div>
         </div>
     </div>
     <div class="nav">
-            <div class="navIn">
+        <div class="navIn">
             <div class="showleft"><</div>
             <div class="year">
                 <ul>
@@ -112,7 +111,7 @@ setTimeout(function(){
                     <li>2012</li>
                     <li>2013</li>
                     <li>2014</li>
-                    <li>2015</li>
+                    <li class="pageSelect">2015</li>
                     <li>2016</li>
                     <li>2017</li>
                     <li>2018</li>
@@ -120,7 +119,7 @@ setTimeout(function(){
                 </ul>
             </div>
             <div class="showright">></div>
-            </div>
+        </div>
     </div>
 	<div class="stage" id="stage1" style="height:609px;">
     	<div class="page pageFirst" >
@@ -135,7 +134,7 @@ setTimeout(function(){
                                 <img src="images/内容部.png" alt="内容部">
                             </li>
                             <li>
-                                <img src="images/摄影部.png" alt="摄影部">
+                                <img src="images/摄影部.jpg" alt="摄影部">
                             </li>
                             <li>
                                 <img src="images/人力资源部.png" alt="人力資源部">
@@ -144,7 +143,7 @@ setTimeout(function(){
                                 <img src="images/产品部.png" alt="产品部">
                             </li>
                             <li>
-                                <img src="images/设计部.png" alt="设计部">
+                                <img src="images/设计部.jpg" alt="设计部">
                             </li>
                             <li>
                                 <img src="images/技术部.png" alt="技术部">
@@ -156,7 +155,7 @@ setTimeout(function(){
                     </div>
                     <div class="imageControl">
                     	<ul>
-                            <li></li>
+                            <li class="liSelect"></li>
                             <li></li>
                             <li></li>
                             <li></li>
@@ -1751,12 +1750,19 @@ setTimeout(function(){
         </div>
     </div>
 </div>
-<script src="js/data.js"></script> <!-- 在DOM渲染之后 -->
-<script src="js/search.js"></script>
-<script type="text/javascript" src="js/scroll-vertical.js"></script>
-<script type="text/javascript" src="js/scroll-horizontal.js"></script>
-<script type="text/javascript" src="js/scroll-box.js"></script>
-<!-- <script type="text/javascript" src="js/jquery.codetker.boxScroll.js"></script> -->
+<script type="text/javascript" src="js/jquery.codetker.windowScroll.js"></script>
+<script type="text/javascript" src="js/jquery.codetker.boxScroll.js"></script>
+
+<script type="text/javascript" src="js/modernizr.custom.js"></script>
+<script type="text/javascript" src="js/classie.js"></script>
+<script type="text/javascript" src="js/modalEffects.js"></script>
+
 <script type="text/javascript" src="js/ready.js"></script>
+<script type="text/javascript" src="js/datafix.js"></script>
+<script type="text/javascript" src="js/search.js"></script>
+<script>
+    // this is important for IEs
+    var polyfilter_scriptpath = '/js/';
+</script>
 </body>
 </html>
