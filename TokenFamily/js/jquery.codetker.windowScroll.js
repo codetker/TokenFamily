@@ -64,9 +64,9 @@
 			}
 
 			function addSpecial() {
-				setTimeout(function(){//bugfix,总是定位在人力
+				setTimeout(function() { //bugfix,总是定位在人力
 					markStage();
-				},1000);
+				}, 1000);
 
 				$(".logo").click(function() {
 					scrollStage(windowobject, 0, 0);
@@ -90,9 +90,9 @@
 
 				setInterval(function() {
 					if ($(".inner").hasClass('select')) {
-						$(".cont-dep p").css("color", "#06F53F");
+						$(".cont-dep p").addClass('select');
 					} else {
-						$(".cont-dep p").css("color", "#fff");
+						$(".cont-dep p").removeClass('select');
 					}
 				}, 100);
 
@@ -390,7 +390,7 @@
 				getPageIndex();
 				$(controlList).removeClass("pageSelect");
 				$(controlList).eq(pageIndex).addClass("pageSelect");
-				if (obj.prevObject[0] === $('#stage2').children('.pageBox').prevObject[0]) {//为了仅执行一次
+				if (obj.prevObject[0] === $('#stage2').children('.pageBox').prevObject[0]) { //为了仅执行一次
 					if (($('.pageSelect').index() * 166 - $('.year').scrollLeft()) < 166) {
 						$('.showleft').click();
 					}

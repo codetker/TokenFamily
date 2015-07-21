@@ -353,7 +353,7 @@ $(document).ready(function() {
 			$('.stage .page .imageControl').each(function() {
 				var obj = $(this).find('li'),
 					indexMax = $(obj).length,
-					liSpace = Math.floor(($(this).width() - 20 * indexMax) / (indexMax - 1));
+					liSpace = Math.floor(($(this).width() - 20 * indexMax) / (indexMax - 1) - 1);
 				$(obj).not(":first").css("margin-left", liSpace + "px");
 
 				if ((indexMax > 1) && (!$(this).parents('.stage').is('#stage1'))) { //当需要分页时实现盒子滚动效果

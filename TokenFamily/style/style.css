@@ -193,13 +193,45 @@
 		text-align: center;
 		float     : left;
 		cursor    : pointer;
+		-webkit-transition-duration: all 0.5s ease 0s;
+		-o-transition-duration     : all 0.5s ease 0s;
+		transition-duration        : all 0.5s ease 0s;
 	 }
 	 .guide ul li:hover{
 		color: #06F53F;
+		-webkit-animation: 1.5s ease-in-out 0s alternate none infinite running neon1 ;
+		-o-animation     : 1.5s ease-in-out 0s alternate none infinite running neon1 ;
+		animation        : 1.5s ease-in-out 0s alternate none infinite running neon1 ;
 	 }
 	 .select{
 	    color: #06F53F;
+	    -webkit-animation: 1.5s ease-in-out 0s alternate none infinite running neon1 ;
+		-o-animation     : 1.5s ease-in-out 0s alternate none infinite running neon1 ;
+		animation        : 1.5s ease-in-out 0s alternate none infinite running neon1 ;
 	 }
+	 /*glow for mozilla*/
+		@-moz-keyframes neon1 {
+		  from {
+		    text-shadow: 0 0 10px #eee,
+		                 0 0 20px  #eee,
+		                 0 0 30px  #eee,
+		                 0 0 40px  #06F53F,
+		                 0 0 70px  #06F53F,
+		                 0 0 80px  #06F53F,
+		                 0 0 100px #06F53F,
+		                 0 0 120px #06F53F;
+		  }
+		  to {
+		    text-shadow: 0 0 5px #eee,
+		                 0 0 10px #eee,
+		                 0 0 15px #eee,
+		                 0 0 20px #06F53F,
+		                 0 0 35px #06F53F,
+		                 0 0 40px #06F53F,
+		                 0 0 50px #06F53F,
+		                 0 0 75px #06F53F;
+		  }
+		}
 	/** 首部end */
 
 	/** stage层样式 */
@@ -308,9 +340,10 @@
 		text-align : center;
 		line-height: 30px;
 		float      : left;
+		position   : relative; 
 	 }
 	 .nav ul li{
-	  	cursor: pointer;;
+	  	cursor: pointer;
 	 }
 	 .nav ul li:hover{
 		color : #03FBD0;
