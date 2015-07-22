@@ -5,10 +5,15 @@ $(document).ready(function() {
 		var text = $(".people").val(),
 			back = new Array,
 			obj = $(".searchButton").find(".md-content"),
-			task;
+			task,
+			nameExp = (/^[\u4e00-\u9fa5]{2,7}$/).test(text);
 
 		if (text == "" || text == "搜索Token成员") {
-			back[0] = "请重新输入姓名后搜索";
+			if(!nameExp){
+				back[0] = "请检查输入!";
+			}else{
+				back[0] = "请重新输入姓名后搜索";
+			}
 			$(obj).find(".name").text(back[0]);
 			$(obj).find(".name").css({
 				"position": "relative",
