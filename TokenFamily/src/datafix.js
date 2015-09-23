@@ -75,6 +75,9 @@ $(document).ready(function() {
 			$(obj).find(".position").html('<i>' + task + '</i>');
 			$(obj).find(".perInfo").html('<p>' + o[j].college + '</p>' + '<p>' + o[j].zhiwu + '</p>' + '<p>' + o[j].zhuanye + '</p>' + '<p>' + o[j].starttime + ' —— ' + o[j].endtime + '</p>');
 		}
+		if(count==6){
+			drawWindow();
+		}
 	}
 
 	function depData(dep, data) {
@@ -200,6 +203,7 @@ $(document).ready(function() {
 		dataFix(dep, 8, data16);
 		dataFix(dep, 9, data17);
 		dataFix(dep, 10, data18);
+		count+=1;
 	}
 
 	var
@@ -213,7 +217,8 @@ $(document).ready(function() {
 		DB31 = new Array(),
 		DB32 = new Array(),
 		DB33 = new Array(),
-		DB34 = new Array();
+		DB34 = new Array(),
+		count = 0;
 
 	function getData(n, DB, obj) { //取数据
 		$.getJSON(
@@ -308,7 +313,7 @@ $(document).ready(function() {
 	getData(6, DB6, '#stage8');
 
 	/* 设置输出后的样式 */
-	setTimeout(function() {
+	function drawWindow(){
 		var showHeight = Math.floor(($(window).height() * 0.95 - 120) * 0.9),
 			showTop = Math.floor(showHeight * 0.05 / 0.9),
 			x = ".innerBox ul li",
@@ -422,6 +427,6 @@ $(document).ready(function() {
 		});
 
 		setCss();
-	}, 4000);
+	}
 
 });

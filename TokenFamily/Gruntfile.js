@@ -20,15 +20,17 @@ module.exports = function(grunt) {
             }
         },
         imagemin: {
-            options: {
-                optimizationLevel: 7,
-                pngquant: true
-            },
-            files: [{
-                expand: true,
-                src: ['images/*.{png,jpg,jpeg,gif,webp,svg}'],
-                dest: 'dest/images'
-            }]
+            prod: {
+                options: {
+                    optimizationLevel: 7,
+                    pngquant: true
+                },
+                files: [{
+                    expand: true,
+                    src: ['images/*.{png,jpg,jpeg,gif,webp,svg}'],
+                    dest: 'dest/'
+                }]
+            }
         },
         usemin: {
             html: 'dest/*.html'

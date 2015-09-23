@@ -4,9 +4,41 @@ $(document).ready(function() {
 	$(".searchButton").delegate("img", "click", function() { //事件委托绑定查询
 		var text = $(".people").val(),
 			back = new Array,
-			obj = $(".searchButton").find(".md-content"),
+			obj=$('.searchButton .md-content'),
 			task,
-			nameExp = (/^[\u4e00-\u9fa5]{2,7}$/).test(text);
+			nameExp = (/^[\u4e00-\u9fa5]{2,7}$/).test(text),
+			template=[
+                        '<div class="bigPic">',
+                            '<img src="" alt="">',
+                        '</div>',
+                        '<div class="info">',
+                            '<p class="name"></p>',
+                            '<p class="position"><i></i></p>',
+                        '</div>',
+                        '<div class="line"></div>',
+                        '<div class="perInfo">',
+                            '<p></p>',
+                            '<p></p>',
+                            '<p></p>',
+                        '</div>',
+                        '<div class="md-close">×</div>'
+                ].join(''),
+                template2=[
+                        '<div class="info">',
+                            '<p class="name"></p>',
+                        '</div>',   
+                        '<div class="md-close">×</div>'
+                ].join('');
+
+		function showSWindow(){
+			$('.md-content').append(template2);
+			$(obj).find(".name").text(back[0]);
+			$(obj).find(".name").css({
+				"position": "relative",
+				"top": "16px"
+			});
+			$(obj).find(".md-close").css("bottom", "30px");
+		}
 
 		if (text == "" || text == "搜索Token成员") {
 			if(!nameExp){
@@ -14,16 +46,7 @@ $(document).ready(function() {
 			}else{
 				back[0] = "请重新输入姓名后搜索";
 			}
-			$(obj).find(".name").text(back[0]);
-			$(obj).find(".name").css({
-				"position": "relative",
-				"top": "16px"
-			});
-			$(obj).find(".md-close").css("bottom", "30px");
-			$(obj).find(".bigPic").css("display", "none");
-			$(obj).find(".line").css("display", "none");
-			$(obj).find(".perInfo").css("display", "none");
-			$(obj).find(".position").css("display", "none");
+			showSWindow();
 		} else {
 			$.getJSON(
 				"http://wechat.wutnews.net/Web/Admin/Api/detail_name.html?name=" + text,
@@ -31,27 +54,16 @@ $(document).ready(function() {
 					back = data;
 					if (back == "") {
 						back[0] = "请检查输入是否错误";
-						$(obj).find(".name").text(back[0]);
-						$(obj).find(".name").css({
-							"position": "relative",
-							"top": "16px"
-						});
-						$(obj).find(".md-close").css("bottom", "30px");
-						$(obj).find(".bigPic").css("display", "none");
-						$(obj).find(".line").css("display", "none");
-						$(obj).find(".perInfo").css("display", "none");
-						$(obj).find(".position").css("display", "none");
+						showSWindow();
 					} else {
+						$('.md-content').append(template);
 						$(obj).find(".name").css({
 							"position": "relative",
 							"top": "0px"
 						});
-						$(obj).find(".bigPic").css("display", "block");
-						$(obj).find(".line").css("display", "block");
-						$(obj).find(".perInfo").css("display", "block");
-						$(obj).find(".position").css("display", "block");
-						$(obj).find(".md-close").css("bottom", $(obj).height() - 50 + "px");
+						$(obj).find(".md-close").css("bottom", $(obj).height() - 40 + "px");
 
+						//过滤时间
 						if (back[0].starttime == null || back[0].starttime.split("-")[0] == 0) {
 							back[0].starttime = '机密';
 							if (back[0].endtime == null || back[0].endtime.split("-")[0] == 0) {
@@ -63,6 +75,7 @@ $(document).ready(function() {
 							}
 						}
 
+						//分部门
 						switch (back[0].department) {
 							case "1":
 								task = "技术部";
@@ -95,6 +108,7 @@ $(document).ready(function() {
 							default:
 								break;
 						}
+
 						//绑定数据
 						$(obj).find("img").attr({
 							"src": 'http://wechat.wutnews.net/Web/Admin/Api/img?dep=' + back[0].department + '&name=' + back[0].name,
@@ -117,12 +131,12 @@ $(document).ready(function() {
 	});
 
 	$(".searchButton").find(".md-close").click(function() {
-		setTimeout(function() {
-			$(".searchButton").children().eq(1).fadeOut("fast");
-		}, 500); //0.5s等待数据
+		$('.searchButton .md-content').fadeOut("fast").empty();
 	});
 	$(".searchButton").children().eq(0).click(function() {
-		$(".searchButton").children().eq(1).fadeIn("slow");
+		setTimeout(function(){
+			$('.searchButton .md-content').fadeIn("slow");
+		},500);//等一下数据
 	});
 
 	$(document).keydown(function(event) {
